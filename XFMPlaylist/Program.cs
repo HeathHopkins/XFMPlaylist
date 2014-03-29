@@ -84,7 +84,6 @@ namespace XFMPlaylist
                         GetTracks(show.Url, show);
                     }
                     catch { }
-                    //var showHtmlString = 
                 }
                 return shows;
             }
@@ -92,11 +91,8 @@ namespace XFMPlaylist
 
         }
 
-        public static List<Track> GetTracks(string showUrl, Show show)
+        private static void GetTracks(string showUrl, Show show)
         {
-            var output = new List<Track>();
-
-
             using (var client = new HttpClient())
             {
                 var htmlString = client.GetStringAsync(showUrl).Result;
@@ -121,9 +117,6 @@ namespace XFMPlaylist
                 }
 
             }
-
-
-            return output;
         }
 
     }
